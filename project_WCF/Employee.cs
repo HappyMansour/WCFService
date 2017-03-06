@@ -21,7 +21,7 @@ namespace project_WCF
         [DataMember(Name = "Dept_ID", Order = 2)]
         public int DP_ID { set; get; }
 
-        [DataMember(Name = "Dept_Name", Order = 2)]
+        [DataMember(Name = "Dept_Name", Order = 3)]
         public int DP_Name { set; get; }
 
 

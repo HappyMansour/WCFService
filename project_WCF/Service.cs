@@ -25,7 +25,7 @@ namespace project_WCF
             com = new SqlCommand();
             com.Connection = con;
             com.CommandType = CommandType.Text;
-            com.CommandText = "select a.* from Employee a,Departments b where a.DP_ID=b.DP_ID";
+            com.CommandText = "select a.* from Emp a,Departments b where a.DP_ID=b.DP_ID";
             ds= new DataSet();
             adapter= new SqlDataAdapter(com);
             adapter.Fill(ds);
@@ -36,7 +36,7 @@ namespace project_WCF
             com = new SqlCommand();
             com.Connection = con;
             com.CommandType = CommandType.Text;
-            com.CommandText = "select a.*,b.DP_Name from Employee a,Departments b where a.DP_ID=b.DP_ID";
+            com.CommandText = "select a.*,b.DP_Name from Emp a,Departments b where a.DP_ID=b.DP_ID and a.EMP_ID=" + EMP_ID;
             ds = new DataSet();
             adapter = new SqlDataAdapter(com);
             adapter.Fill(ds);
@@ -47,7 +47,7 @@ namespace project_WCF
             com = new SqlCommand();
             com.Connection = con;
             com.CommandType = CommandType.Text;
-            com.CommandText = "insert into Employee values ("+ EMP_ID+",'"+ Name+"',"+ DP_ID +")";
+            com.CommandText = "insert into Emp values (" + EMP_ID+",'"+ Name+"',"+ DP_ID +")";
             con.Open();
             int affected = com.ExecuteNonQuery();
             con.Close();
@@ -60,7 +60,7 @@ namespace project_WCF
             com = new SqlCommand();
             com.Connection = con;
             com.CommandType = CommandType.Text;
-            com.CommandText = "update Employee set EMP_Name='"+ Name+"',DP_ID="+ DP_ID;
+            com.CommandText = "update Emp set EMP_Name='"+ Name+"',DP_ID="+ DP_ID+ "where EMP_ID="+ EMP_ID;
             con.Open();
             int affected = com.ExecuteNonQuery();
             con.Close();
@@ -73,7 +73,7 @@ namespace project_WCF
             com = new SqlCommand();
             com.Connection = con;
             com.CommandType = CommandType.Text;
-            com.CommandText = "Delete from Employee where EMP_ID=" + EMP_ID;
+            com.CommandText = "Delete from Emp where EMP_ID=" + EMP_ID;
             con.Open();
             int affected = com.ExecuteNonQuery();
             con.Close();
