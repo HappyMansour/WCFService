@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Service="project_WCF.Service"%>
