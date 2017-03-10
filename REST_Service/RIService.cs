@@ -1,4 +1,5 @@
-﻿using System;
+﻿using REST_Service;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -17,28 +18,61 @@ namespace REST
         // http://.........../Employees
         [WebGet(UriTemplate = "Employees")]
         [OperationContract]
-        DataSet GetAll();
+        List<Emp> GetAllEmp();
+
+        // http://.........../Departments
+        [WebGet(UriTemplate = "Departments")]
+        [OperationContract]
+        List<Department> GetAllDepartment();
 
         // http://.........../Employee/1
         [WebGet(UriTemplate = "Employee/{EMP_ID}")]
         [OperationContract]
-        DataSet GetByID(string EMP_ID);
+        Emp GetEmpByID(string EMP_ID);
+
+
+        // http://.........../Department/1
+        [WebGet(UriTemplate = "Department/{DP_ID}")]
+        [OperationContract]
+        Department GetDeptByID(string DP_ID);
+
 
 
         // POST http://.........../Employee
         [WebInvoke(Method = "POST", UriTemplate = "Employee", BodyStyle = WebMessageBodyStyle.WrappedRequest)]
         [OperationContract]
-        int Insert(string EMP_ID, string Name, string DP_ID);
+        void InsertEmp(string EMP_ID, string Name, string DP_ID);
+
+        // POST http://.........../Department
+        [WebInvoke(Method = "POST", UriTemplate = "Department", BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+        [OperationContract]
+        void InsertDept(string DP_ID, string Name);
+
+
 
         // PUT http://.........../Employee/1
         [WebInvoke(Method = "PUT", UriTemplate = "Employee/{EMP_ID}",BodyStyle = WebMessageBodyStyle.WrappedRequest)]
         [OperationContract]
-        int Update(string EMP_ID, string Name, string DP_ID);
+        void UpdateEmp(string EMP_ID, string Name, string DP_ID);
+
+
+        // PUT http://.........../Department/1
+        [WebInvoke(Method = "PUT", UriTemplate = "Department/{DP_ID}", BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+        [OperationContract]
+        void UpdateDept(string Name, string DP_ID);
 
 
         [WebInvoke(Method = "DELETE", UriTemplate = "Employee/{EMP_ID}")]
         [OperationContract]
-        int Delete(string EMP_ID);
+        int Delete_Emp(string EMP_ID);
+
+
+        [WebInvoke(Method = "DELETE", UriTemplate = "Department/{DP_ID}")]
+        [OperationContract]
+        int Delete_Dept(string DP_ID);
+
+
+
 
 
 

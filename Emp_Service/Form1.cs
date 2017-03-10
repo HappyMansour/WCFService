@@ -7,21 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.ServiceModel;
 
-namespace Client
+namespace Emp_Service
 {
     public partial class Form1 : Form
     {
-        Client_Emp_Service.ServiceClient c = new Client_Emp_Service.ServiceClient();
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void View_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
